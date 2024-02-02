@@ -2,6 +2,7 @@ import { useGLTF } from "@react-three/drei";
 
 const path = "../public/models/keeb.glb";
 import { NodeToyMaterial } from '@nodetoy/react-nodetoy';
+import { data } from "../utlils/shaderData";
 
 export function Keeb(props) {
   const { nodes, materials } = useGLTF(path);
@@ -20,14 +21,16 @@ export function Keeb(props) {
         scale={0.033}
       >
         <mesh
-          onPointerEnter={(e) => console.log(e)}
+          castShadow
+          receiveShadow
           geometry={nodes.Cube063_1.geometry}
           material={materials["Polycarbonate Case"]}
         />
         <mesh
+          castShadow
+          receiveShadow
           geometry={nodes.Cube063_2.geometry}
-        >
-        <NodeToyMaterial data={data} />
+          material={materials["Alumunium Knob"]}/>
       </group>
     </group>
   );
